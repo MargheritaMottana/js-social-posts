@@ -92,7 +92,7 @@ for (let i = 0; i < posts.length; i++) {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">80</b> persone
+                        Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">${posts[i].likes}</b> persone
                     </div>
                 </div>
             </div>
@@ -104,32 +104,37 @@ for (let i = 0; i < posts.length; i++) {
 const myButtons = document.querySelectorAll('.js-like-button');
 console.log(myButtons)
 
-// creo un ciclo per leggere tutti i bottoni\
+// creo un ciclo per leggere tutti i bottoni
 for (let i = 0; i < myButtons.length; i++) {
     myButtons[i].addEventListener('click', function (event) {
 
-        // in questo caso il prevent, previene che il click rimandi all' href associato al bottone.
+        // in questo caso il prevent, previene che il click rimandi all'href associato al bottone.
         // in questo modo non mi riporta ad inizio pagina
         event.preventDefault()
 
         // stampo in console per verificare che sia cliccato
         console.log('click :3')
 
-        // aggiungo la classe colorata al bottone cliccato
-        this.classList.add('like-button--liked')
+        // se nella lista delle classi NON (!) c'è cliccato, allora posso cliccare
+        if (!this.classList.contains('like-button--liked')) {
 
-        // dichiaro l'id del post
-        // posso usare dataset perché gli attributi che iniziano con "data-" rientrano nel dataset
-        const idPost = this.dataset.postid;
+            // aggiungo la classe colorata al bottone cliccato
+            this.classList.add('like-button--liked')
 
-        // dichiaro il contatore per collegarlo all'id
-        const counter = document.getElementById('like-counter-' + idPost);
+            // dichiaro l'id del post
+            // posso usare dataset perché gli attributi che iniziano con "data-" rientrano nel dataset
+            const idPost = this.dataset.postid;
 
-        // dicharo i like che vengono aggiunti
-        let likes = parseInt(counter.innerText);
-        // incremento i like
-        likes++
-        // li riporto in pagina con l'incremento
-        counter.innerHTML = likes
+            // dichiaro il contatore per collegarlo all'id
+            const counter = document.getElementById('like-counter-' + idPost);
+
+            // dicharo i like che vengono aggiunti
+            let likes = parseInt(counter.innerText);
+            // incremento i like
+            likes++
+            // li riporto in pagina con l'incremento
+            counter.innerHTML = likes
+        }
+
     })
 }

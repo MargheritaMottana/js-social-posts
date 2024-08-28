@@ -100,6 +100,9 @@ for (let i = 0; i < posts.length; i++) {
     `;
 }
 
+// aggiungo nuovo array per contenere i post con i like
+const postLiked = [];
+
 // dichiaro i bottoni su cui cliccare per aggiungere like
 const myButtons = document.querySelectorAll('.js-like-button');
 console.log(myButtons)
@@ -113,7 +116,7 @@ for (let i = 0; i < myButtons.length; i++) {
         event.preventDefault()
 
         // stampo in console per verificare che sia cliccato
-        console.log('click :3')
+        // console.log('click :3')
 
         // se nella lista delle classi NON (!) c'è cliccato, allora posso cliccare
         if (!this.classList.contains('like-button--liked')) {
@@ -133,6 +136,21 @@ for (let i = 0; i < myButtons.length; i++) {
             // incremento i like
             likes++
             // li riporto in pagina con l'incremento
+            counter.innerHTML = likes
+
+            // per ogni click, pusho l'id del post, nell'array per i post con i like
+            postLiked.push(idPost);
+            // stampo il nuovo array
+            console.log('i post con i like sono: ' + postLiked)
+        }
+        else {
+            // rimuovo la classe colorata al bottone cliccato
+            this.classList.remove('like-button--liked')
+            const idPost = this.dataset.postid;
+            const counter = document.getElementById('like-counter-' + idPost);
+            let likes = parseInt(counter.innerText);
+            // decremento i like
+            likes--
             counter.innerHTML = likes
         }
 

@@ -86,13 +86,13 @@ for (let i = 0; i < posts.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${posts[i].id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                        Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">80</b> persone
                     </div>
                 </div>
             </div>
@@ -114,5 +114,22 @@ for (let i = 0; i < myButtons.length; i++) {
 
         // stampo in console per verificare che sia cliccato
         console.log('click :3')
+
+        // aggiungo la classe colorata al bottone cliccato
+        this.classList.add('like-button--liked')
+
+        // dichiaro l'id del post
+        // posso usare dataset perché gli attributi che iniziano con "data-" rientrano nel dataset
+        const idPost = this.dataset.postid;
+
+        // dichiaro il contatore per collegarlo all'id
+        const counter = document.getElementById('like-counter-' + idPost);
+
+        // dicharo i like che vengono aggiunti
+        let likes = parseInt(counter.innerText);
+        // incremento i like
+        likes++
+        // li riporto in pagina con l'incremento
+        counter.innerHTML = likes
     })
 }

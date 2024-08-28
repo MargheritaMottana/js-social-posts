@@ -1,7 +1,7 @@
 const posts = [
     {
         "id": 1,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "content": "Pioggerellina carina. 🌧 📖 🌧",
         "media": "https://unsplash.it/600/300?image=171",
         "author": {
             "name": "Phil Mangione",
@@ -12,7 +12,7 @@ const posts = [
     },
     {
         "id": 2,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "content": "Erbettina secchina. 🌾 🌾 🌾",
         "media": "https://unsplash.it/600/400?image=112",
         "author": {
             "name": "Sofia Perlari",
@@ -23,7 +23,7 @@ const posts = [
     },
     {
         "id": 3,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "content": "Baguette e Tour Eiffel. 🇫🇷 🥖 🗼",
         "media": "https://unsplash.it/600/400?image=234",
         "author": {
             "name": "Chiara Passaro",
@@ -34,7 +34,7 @@ const posts = [
     },
     {
         "id": 4,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "content": "Leggere è un atto squisitamente passionale, è un caso di innamoramento mentale. 📚 🎧 ☕",
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
@@ -45,7 +45,7 @@ const posts = [
     },
     {
         "id": 5,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "content": "Work smarter, not harder. ( ◡̀_◡́)ᕤ",
         "media": "https://unsplash.it/600/400?image=534",
         "author": {
             "name": "Alessandro Sainato",
@@ -64,23 +64,24 @@ for (let i = 0; i < posts.length; i++) {
     console.log(posts[i])
 
     // scrivo all'interno del contenitore i post (+= serve per non sovrascrivere, quindi aggiunge tutti i post)
+
+    // aggiunti i tag per prendere le informazioni dall'array
     postContainer.innerHTML += `
     <div class="post">
             <div class="post__header">
                 <div class="post-meta">
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">
+                        <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">Phil Mangione</div>
-                        <div class="post-meta__time">4 mesi fa</div>
+                        <div class="post-meta__author">${posts[i].author.name}</div>
+                        <div class="post-meta__time">${posts[i].created}</div>
                     </div>
                 </div>
             </div>
-            <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad
-                ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+            <div class="post__text">${posts[i].content}</div>
             <div class="post__image">
-                <img src="https://unsplash.it/600/300?image=171" alt="">
+                <img src="${posts[i].media}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
@@ -97,6 +98,4 @@ for (let i = 0; i < posts.length; i++) {
             </div>
         </div> 
     `
-
-
 }

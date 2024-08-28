@@ -97,5 +97,22 @@ for (let i = 0; i < posts.length; i++) {
                 </div>
             </div>
         </div> 
-    `
+    `;
+}
+
+// dichiaro i bottoni su cui cliccare per aggiungere like
+const myButtons = document.querySelectorAll('.js-like-button');
+console.log(myButtons)
+
+// creo un ciclo per leggere tutti i bottoni\
+for (let i = 0; i < myButtons.length; i++) {
+    myButtons[i].addEventListener('click', function (event) {
+
+        // in questo caso il prevent, previene che il click rimandi all' href associato al bottone.
+        // in questo modo non mi riporta ad inizio pagina
+        event.preventDefault()
+
+        // stampo in console per verificare che sia cliccato
+        console.log('click :3')
+    })
 }
